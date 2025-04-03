@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Profile Background */
+        header {
+            position: relative;
+            background: url('developer-background.jpg') no-repeat center center/cover;
+            padding: 50px;
+            text-align: center;
+            color: white;
+        }
+        
+        /* Enlarged Profile Image */
+        .profile-img {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            border: 5px solid white;
+        }
+        
+        /* Effect Container for Profile */
+        #effect-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 0;
+        }
+        
+        .comet, .star {
+            position: absolute;
+            opacity: 0.8;
+            pointer-events: none;
+        }
+        .comet {
+            width: 2px;
+            height: 10px;
+            background-color: white;
+            animation: fall linear infinite;
+        }
+        @keyframes fall {
+            0% { transform: translateY(-10px); opacity: 1; }
+            100% { transform: translateY(100vh); opacity: 0; }
+        }
+        .star {
+            width: 6px;
+            height: 6px;
+            background: radial-gradient(circle, white, transparent);
+            border-radius: 50%;
+            animation: zigzag 3s linear infinite;
+        }
+        .star::before {
+            content: '';
+            position: absolute;
+            width: 40px;
+            height: 2px;
+            background: linear-gradient(90deg, white, transparent);
+        }
+        @keyframes zigzag {
+            0% { transform: translateX(0) translateY(0); opacity: 1; }
+            25% { transform: translateX(-40px) translateY(40px); }
+            50% { transform: translateX(40px) translateY(80px); }
+            75% { transform: translateX(-40px) translateY(120px); }
+            100% { transform: translateX(0) translateY(160px); opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div id="effect-container"></div>
+        <img src="profile.jpg" alt="Profile Picture" class="profile-img">
+        <h1>VASANTHA KUMAR M</h1>
+        <p>I AM AN <span style="font-weight: bold;">ASPIRING</span>
+        <span id="career"></span></p>
+    </header>
+    
+    <section id="about">
+        <h2>About Me</h2>
+        <p> Data Science Engineer with a proven track record of leveraging analytical, mathematical, and programming
+            skills to solve challenging business problems. Experienced in all phases of the data science lifecycle, from
+            problem definition to model deployment. Adept at building scalable machine learning solutions and
+            optimizing them for performance and accuracy.</p>
+    </section>
+    
+    <section id="projects">
+        <h2>Projects</h2>
+        <div class="project">
+            <h3>Sitting Posture Corrector</h3>
+            <p>This project is a deep learning-based sitting posture correction system using MediaPipe. It detects and analyzes a user's posture in real-time, providing feedback to improve sitting ergonomics and prevent issues like back pain or poor posture habits.</p>
+        </div>
+    </section>
+    
+    <section id="skills">
+        <h2>Skills</h2>
+        <ul>
+            <li>Artificial Intelligence</li>
+            <li>    Machine Learning</li>
+            <li>    Python</li>
+        </ul>
+    </section>
+    
+    <section id="contact">
+        <h2>Contact</h2>
+        <p>Email: vsnthsanjay@gmail.com</p>
+        <p>LinkedIn: <a href="https://www.linkedin.com/in/m-vasantha-kumar-169056243/"> my linkedin profile</a></p>
+    </section>
+    
+    <footer>
+        <p>&copy; 2025 VASANTH VK</p>
+    </footer>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            // Typing effect
+            const careerText = document.getElementById("career");
+            const careers = ["DATA ANALYST", "DATA SCIENTIST"];
+            let careerIndex = 0;
+            let charIndex = 0;
+            let isDeleting = false;
+
+            function typeEffect() {
+                const currentCareer = careers[careerIndex];
+                if (isDeleting) {
+                    careerText.textContent = currentCareer.substring(0, charIndex--);
+                } else {
+                    careerText.textContent = currentCareer.substring(0, charIndex++);
+                }
+
+                if (!isDeleting && charIndex === currentCareer.length) {
+                    setTimeout(() => isDeleting = true, 1000);
+                } else if (isDeleting && charIndex === 0) {
+                    isDeleting = false;
+                    careerIndex = (careerIndex + 1) % careers.length;
+                }
+                setTimeout(typeEffect, isDeleting ? 100 : 150);
+            }
+            typeEffect();
+
+            // Effects container
+            const effectContainer = document.getElementById("effect-container");
+            const numberOfComets = 30;
+            const numberOfStars = 20;
+
+            for (let i = 0; i < numberOfComets; i++) {
+                let comet = document.createElement("div");
+                comet.classList.add("comet");
+                comet.style.left = `${Math.random() * 100}%`;
+                comet.style.top = `${Math.random() * -50}px`;
+                comet.style.animationDuration = `${Math.random() * 3 + 2}s`;
+                comet.style.animationDelay = `${Math.random() * 5}s`;
+                effectContainer.appendChild(comet);
+            }
+
+            for (let i = 0; i < numberOfStars; i++) {
+                let star = document.createElement("div");
+                star.classList.add("star");
+                star.style.left = `${Math.random() * 100}%`;
+                star.style.top = `${Math.random() * 100}%`;
+                star.style.animationDuration = `${Math.random() * 3 + 2}s`;
+                star.style.animationDelay = `${Math.random() * 5}s`;
+                effectContainer.appendChild(star);
+            }
+        });
+    </script>
+</body>
+</html>

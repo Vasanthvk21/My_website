@@ -1,0 +1,146 @@
+/* Header */
+header {
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 20px;
+    text-align: center;
+    font-size: 2em;
+    position: relative;
+}
+
+/* Profile Image with Fire Glow */
+/* Enlarged Profile Image */
+.profile-img {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    border: 5px solid white;
+    box-shadow: none; /* Removed fire glow effect */
+    animation: none; /* Removed animation */
+}
+
+}
+
+@keyframes fireGlow {
+    0% {
+        box-shadow: 0 0 20px #e05a00, 0 0 40px #ff4500, 0 0 60px #ff0000;
+    }
+    100% {
+        box-shadow: 0 0 30px #ff4500, 0 0 50px #ff0000, 0 0 70px #ff6700;
+    }
+}
+
+/* Career Text */
+#career {
+    color: #ff6700;
+    font-weight: bold;
+}
+
+/* Sections */
+section {
+    max-width: 900px;
+    margin: 30px auto;
+    padding: 25px;
+    background: #1a1a1a;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease-in-out;
+}
+
+section:hover {
+    transform: scale(1.02);
+}
+
+/* Titles */
+h2 {
+    color: #7a00cc;
+    border-bottom: 3px solid #7a00cc;
+    display: inline-block;
+    padding-bottom: 5px;
+}
+
+/* Projects */
+.project {
+    background: #2a2a2a;
+    padding: 15px;
+    border-left: 5px solid #7a00cc;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    transition: all 0.3s ease-in-out;
+}
+
+.project:hover {
+    background: #3a3a3a;
+}
+
+/* Skills */
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+ul li {
+    background: #7a00cc;
+    color: white;
+    display: inline-block;
+    padding: 10px 15px;
+    margin: 5px;
+    border-radius: 20px;
+    font-size: 0.9em;
+}
+
+/* Links */
+a {
+    color: #7a00cc;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 15px;
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    font-size: 0.9em;
+}
+
+/* General Styles */
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(to right, #3b0073, #000000);
+    color: #ddd;
+    /* Removed overflow: hidden to allow scrolling */
+}
+
+/* Background Comet Effect */
+.comet {
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    background: linear-gradient(45deg, #ffffff, #ff6700);
+    border-radius: 50%;
+    box-shadow: 0 0 8px #ff6700;
+    animation: flyComet linear infinite;
+    opacity: 0.8;
+}
+
+@keyframes flyComet {
+    from {
+        transform: translateX(-10vw) translateY(100vh);
+        opacity: 1;
+    }
+    to {
+        transform: translateX(100vw) translateY(-100vh);
+        opacity: 0;
+    }
+}
