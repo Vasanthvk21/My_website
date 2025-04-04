@@ -1,10 +1,17 @@
 {
   "hosting": {
+    "site": "vasanth-portfolio-d5525",
     "public": "public",
     "ignore": [
       "firebase.json",
       "**/.*",
       "**/node_modules/**"
+    ],
+    "rewrites": [
+      {
+        "source": "**",
+        "destination": "/index.html"
+      }
     ]
   }
 }
